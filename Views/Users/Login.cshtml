@@ -1,0 +1,32 @@
+﻿@model Eos.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+<img src="~/img/logo.png" class="logoLogin"/>
+<div class="divLogin">
+    <form role="form" action="~/Users/Login" method="POST" class="form-signin">
+        <label for="inputEmail" class="sr-only">Usuário</label>
+        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @type = "text", @placeholder = "Usuário", @required = "required", maxlength = "16", @autofocus = "autofocus" })
+        <span asp-validation-for="Username" class="text-danger"></span>
+        <br />
+        <label for="inputPassword" class="sr-only">Senha</label>
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password", @placeholder = "Senha", @required = "required", maxlength = "64" })
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <div class="checkbox mb-3">
+            <a href="#">Esqueci a Senha</a>
+        </div>
+        @if (ViewBag.Mensagem != null && string.IsNullOrWhiteSpace(ViewBag.Mensagem) == false)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.Mensagem
+            </div>}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+        <a class="btn btn-lg btn-default btn-block" asp-area="" asp-controller="Users" asp-action="Create">Registrar novo usuário</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

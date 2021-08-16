@@ -1,0 +1,42 @@
+﻿@model Eos.Models.User
+
+@{
+    ViewData["Title"] = "Cadastro Novo Usuário";
+}
+
+<h1>Cadastro de Novo Usuário</h1>
+<hr />
+<div class="divLogin">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="Username" class="control-label"></label>
+            <input asp-for="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Avatar" class="control-label"></label>
+            <input asp-for="Avatar" class="form-control" />
+            <span asp-validation-for="Avatar" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

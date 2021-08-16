@@ -1,0 +1,66 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+
+    .bLogin{
+        background-image: url(/img/background.png) !important;
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+
+textarea {
+    resize: none;
+    height: 10vh;
+    width: 35vw !important;
+}
+
+.avatar {
+    max-width: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px black;
+}
+
+.post, .op {
+    padding: 1.5vh !important
+}
+
+.post {
+    background: #EDD1B0 !important;
+    border-radius: 0 20px 20px;
+}
+
+.op {
+    background: #DBE1F1 !important;
+    border-radius: 20px 0 20px 20px;
+}
+
+.divLogin{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#progressChar{
+    width: 5vw;
+    height: 15px;
+    background-color: #DDD;
+    align-self: center;
+}
+
+#insideProg{
+    width: 100%;
+    background-color: cornflowerblue;
+}

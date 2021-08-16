@@ -1,0 +1,71 @@
+﻿@model Eos.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="post.PostContent" class="control-label"></label>
+        <textarea asp-for="post.PostContent" class="form-control mx-auto"></textarea>
+        <span asp-validation-for="post.PostContent" class="text-danger"></span>
+        <input asp-for="post.UserID" class="form-control" value="1" hidden />
+    </div>
+    <div class="form-group d-flex">
+        <div id="progressChar" class="mx-4">
+            <div id="insideProg">
+            </div>
+        </div>
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+<table class="table">
+    <tbody>
+        @foreach (var item in Model.postLista)
+        {
+            @if (item.User.Username == User.Identity.Name)
+            {
+                <tr>
+                    <td>
+                        <div class="text-center">
+                            <span>@item.CreateDate.ToString("dd/MM/yyyy HH:mm")</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="op">
+                            @Html.DisplayFor(modelItem => item.PostContent)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <img src=@Html.DisplayFor(modelItem => item.User.Avatar) class="avatar" /><br />
+                            Você
+                        </div>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        <div class="text-center">
+                            <img src=@Html.DisplayFor(modelItem => item.User.Avatar) class="avatar" /><br />
+                            @Html.DisplayFor(modelItem => item.User.Username)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="post">
+                            @Html.DisplayFor(modelItem => item.PostContent)
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <span>@item.CreateDate.ToString("dd/MM/yyyy HH:mm")</span>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
